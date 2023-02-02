@@ -1,0 +1,28 @@
+.login {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  &-header {
+    text-transform: uppercase;
+    //font-style: italic;
+    margin-bottom: 10px;
+    font-size: 22px;
+  }
+  &-form {
+    display: flex;
+    flex-direction: column;
+    width: 450px;
+    margin-bottom: 5px;
+  }
+  span {
+    font-size: 14px;
+  }
+  &-show {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+  }
+}

@@ -1,0 +1,14 @@
+@import './src/variables.scss';
+
+.checkbox {
+  background-color: $purple;
+  border: 1px $purple;
+  accent-color: $purple;
+  height: 14px;
+  width: 14px;
+  margin: 3px;
+  &:focus-visible {
+    outline-offset: 0;
+    outline: none;
+  }
+}

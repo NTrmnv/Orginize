@@ -1,0 +1,44 @@
+@import './src/variables.scss';
+
+.button {
+  height: 42px;
+  color: $white;
+  border-radius: 10px;
+  font-size: 16px;
+  &:hover {
+    cursor: pointer;
+  }
+  &-purple-lavender {
+    border: 1px solid $purple-lavender;
+    background-color: $purple-lavender;
+    &:hover {
+      border: 1px solid $purple-light;
+      background-color: $purple-light;
+    }
+  }
+  &-peach {
+    border: 1px solid $peach;
+    background-color: $peach;
+    &:hover {
+      border: 1px solid $peach-dark;
+      background-color: $peach-dark;
+    }
+  }
+  &-blue {
+    border: 1px solid $blue;
+    background-color: $blue;
+    &:hover {
+      border: 1px solid $blue-dark;
+      background-color: $blue-dark;
+    }
+  }
+  &-small {
+    width: 150px;
+  }
+  &-middle {
+    width: 250px;
+  }
+  &-large {
+    width: 450px;
+  }
+}
