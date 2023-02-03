@@ -5,6 +5,7 @@
   color: $white;
   border-radius: 10px;
   font-size: 16px;
+  margin: 10px 0;
   &:hover {
     cursor: pointer;
   }
@@ -40,5 +41,9 @@
   }
   &-large {
     width: 450px;
+  }
+  &-disabled {
+    pointer-events: none;
+    opacity: 40%;
   }
 }

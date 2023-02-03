@@ -4,9 +4,11 @@ import './Button.scss';
 type ButtonPropsT = {
     content: string,
     color: 'purple-lavender' | 'peach' | 'blue',
-    size: 'small' | 'middle' | 'large'
+    size: 'small' | 'middle' | 'large',
+    disabled?: boolean,
+    onClick?: () => void
 }
 
 export const Button = (props: ButtonPropsT) => {
-    return <button className={`button button-${props.color} button-${props.size}`}>{props.content}</button>
+    return <button onClick={props.onClick} className={`button button-${props.color} button-${props.size} button-${props.disabled ? 'disabled' : ''}`}>{props.content}</button>
 }
