@@ -5,7 +5,7 @@ import {useTranslation} from "react-i18next";
 import {Button} from "../base/Button/Button";
 import {Link} from "react-router-dom";
 import {LOGIN_ROUTE} from "../../routes/consts";
-import {Checkbox} from "../base/Checkbox/Checkbox";
+import {Checkbox} from "../base/Radio/Checkbox";
 import {testEmail, testPassword, testUsername} from "../../utils/utils";
 
 type RequiredFields = 'username' | 'mail' | 'password' | 'repeatPassword';
@@ -38,6 +38,7 @@ export const SignUp = () => {
             <span>{t('enterUsername')}</span>
             <Input
                 name={'username'}
+                size={"large"}
                 type={'text'}
                 placeholder={'Bagurgle'}
                 onChange={(e)=> {
@@ -57,6 +58,7 @@ export const SignUp = () => {
             <span>{t('enterMail')}</span>
             <Input
                 name={'email'}
+                size={"large"}
                 type={'email'}
                 placeholder={'murlock@gmail.com'}
                 onChange={(e)=> {
@@ -76,6 +78,7 @@ export const SignUp = () => {
             <span>{t('enterPassword')}</span>
             <Input
                 name={'password'}
+                size={"large"}
                 type={showPassword ? 'text' :'password'}
                 placeholder={'********'}
                 onChange={(e)=> {
@@ -95,6 +98,7 @@ export const SignUp = () => {
             <span>{t('repeatPassword')}</span>
             <Input
                 name={'password'}
+                size={"large"}
                 type={showPassword ? 'text' :'password'}
                 placeholder={'********'}
                 onChange={(e)=> {
@@ -111,7 +115,7 @@ export const SignUp = () => {
                 error={!touchedFields.repeatPassword.isValid}
                 textError={touchedFields.repeatPassword.textError}
             />
-            {signupFields.password && signupFields.repeatPassword && <div className={'signup-show'}><Checkbox onClick={() => {
+            {signupFields.password && signupFields.repeatPassword && <div className={'signup-show'}><Checkbox onChange={() => {
                 setShowPassword(!showPassword)
             }}/>{t('showPassword')}</div>}
             {signupFields.password !== signupFields.repeatPassword && <div className={'signup-error'}>{t('passwordsDoNotMatch')}</div>}

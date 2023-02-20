@@ -1,11 +1,13 @@
 import React from 'react'
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import {routes} from "./routes/routes";
+import {privateRoutes, publicRoutes} from "./routes/routes";
+import {Wrapper} from "./components/wrapper/Wrapper";
 
 export const App = () => {
   return <BrowserRouter>
     <Routes>
-      {routes.map(({path, Element}) => <Route key={path} element={Element} path={path}/>)}
+      {privateRoutes.map(({path, Element}) => <Route key={path} element={<Wrapper><Element/></Wrapper>} path={path}/>)}
+      {publicRoutes.map(({path, Element}) => <Route key={path} element={<Element/>} path={path}/>)}
     </Routes>
   </BrowserRouter>
 };

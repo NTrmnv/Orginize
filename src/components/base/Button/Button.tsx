@@ -9,6 +9,10 @@ type ButtonPropsT = {
     onClick?: () => void
 }
 
-export const Button = (props: ButtonPropsT) => {
-    return <button onClick={props.onClick} className={`button button-${props.color} button-${props.size} button-${props.disabled ? 'disabled' : ''}`}>{props.content}</button>
+export const Button = ({content, color, size, disabled, onClick}: ButtonPropsT) => {
+    return <button
+        onClick={onClick}
+        className={`button button-${color} button-${size} button-${disabled ? 'disabled' : ''}`}>
+        {content}
+    </button>
 }

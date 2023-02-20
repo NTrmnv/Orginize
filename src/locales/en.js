@@ -17,5 +17,7 @@ export const translationEN = {
   enterCorrectPassword: "Please enter a correct password",
   enterCorrectMail: "Please enter a correct email address",
   required: "Required",
-  passwordsDoNotMatch: "Your passwords do not match"
+  passwordsDoNotMatch: "Your passwords do not match",
+  todoHeader: "To do list",
+  home: "Home"
 }
