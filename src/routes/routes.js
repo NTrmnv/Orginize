@@ -3,17 +3,20 @@ import {Login} from "../components/login/Login";
 import {SignUp} from "../components/signup/SignUp";
 import {Home} from "../components/home/Home";
 
-export const routes = [
+export const publicRoutes = [
     {
         path: LOGIN_ROUTE,
-        Element: <Login/>
-    },
+        Element: Login
+    }
+]
+
+export const privateRoutes = [
     {
         path: SIGNUP_ROUTE,
-        Element: <SignUp/>
+        Element: SignUp
     },
     {
         path: HOME_ROUTE,
-        Element: <Home/>
+        Element: Home
     }
 ]

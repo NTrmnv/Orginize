@@ -1,0 +1,23 @@
+@import './src/variables.scss';
+
+.header {
+  -webkit-box-shadow: 0px 3px 8px 5px rgba(241, 237, 242, 1);
+  -moz-box-shadow: 0px 3px 8px 5px rgba(241, 237, 242, 1);
+  box-shadow: 0px 3px 8px 5px rgba(241, 237, 242, 1);
+  position: relative;
+  z-index: 10;
+  height: 60px;
+  padding: 0 60px;
+  &-inner {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    a {
+      font-size: 18px;
+      text-decoration: none;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}

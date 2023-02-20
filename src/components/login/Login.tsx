@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import {useTranslation} from "react-i18next";
 import {Input} from "../base/Input/Input";
-import {Checkbox} from "../base/Checkbox/Checkbox";
+import {Checkbox} from "../base/Radio/Checkbox";
 import './Login.scss'
 import {Button} from "../base/Button/Button";
-import {Link, Navigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {HOME_ROUTE, SIGNUP_ROUTE} from "../../routes/consts";
 import {testPassword, testUsername} from "../../utils/utils";
 
@@ -16,7 +16,6 @@ type ValidateFieldsT = {
     }
 }
 
-
 export const Login = () => {
     const { t } = useTranslation();
     const [showPassword, setShowPassword] = useState(false)
@@ -25,16 +24,17 @@ export const Login = () => {
         password: {isValid: true, textError: ""},
         username: {isValid: true, textError: ""}
     })
+    const navigate = useNavigate();
+
     const watchValidate = (selector: Partial<ValidateFieldsT>) => {
         setTouchedFields(prevState => ({...prevState, ...selector}))
     }
-    const handleSubmit = () => {
-        return JSON.parse(localStorage.getItem(loginFields.username) || '{}').password === loginFields.password &&
-         window.location.replace("/home");
-        // console.log(1)
-    }
 
-    // console.log(JSON.parse(localStorage.getItem(loginFields.username) || '{}').password === loginFields.password)
+    const currentUser = localStorage.getItem(loginFields.username);
+    const handleSubmit = () => {
+        return JSON.parse(currentUser || '{}').password === loginFields.password &&
+            navigate(HOME_ROUTE, {state: { currentUser: loginFields.username}})
+    }
 
     return <div className={'login'}>
         <div className={'login-header'}>{t('login')}</div>
@@ -46,6 +46,7 @@ export const Login = () => {
             <Input
                 name={'username'}
                 type={'text'}
+                size={"large"}
                 placeholder={`${t('enterUsernamePlaceholder')}`}
                 onChange={(e)=> {
                     setLoginFields({...loginFields, username: e.target.value});
@@ -64,6 +65,7 @@ export const Login = () => {
             <span>{t('password')}</span>
             <Input
                 name={'password'}
+                size={"large"}
                 type={showPassword ? 'text' :'password'}
                 placeholder={`${t('enterPasswordPlaceholder')}`}
                 onChange={(e)=> {
@@ -80,7 +82,7 @@ export const Login = () => {
                 error={!touchedFields.password.isValid}
                 textError={touchedFields.password.textError}
             />
-            {loginFields.password && <div className={'login-show'}><Checkbox onClick={() => {
+            {loginFields.password && <div className={'login-show'}><Checkbox onChange={() => {
                 setShowPassword(!showPassword)
             }}/>{t('showPassword')}</div>}
             <Button

@@ -1,7 +1,5 @@
 import React from "react";
 import './Input.scss'
-import {Simulate} from "react-dom/test-utils";
-import error = Simulate.error;
 
 type inputPropsT = {
     name: string,
@@ -10,19 +8,24 @@ type inputPropsT = {
     placeholder?: string,
     error?: boolean,
     textError?: string,
-    onBlur?: (e:any) => void
+    onBlur?: (e:any) => void,
+    size: 'small' | 'middle' | 'large',
+    value?: string,
+    onKeyDown?: (e:any) => void
 }
-export const Input = (props: inputPropsT) => {
+export const Input = ({name, type, onChange, placeholder, error, textError, onBlur, size, value, onKeyDown}: inputPropsT) => {
 
     return <>
         <input
-            className={`input input-${props.error ? 'error' : ''}`}
-            name={props.name}
-            type={props.type}
-            onChange={props.onChange}
-            placeholder={props.placeholder}
-            onBlur={props.onBlur}
+            className={`input input-${error ? 'error' : ''} input-${size}`}
+            name={name}
+            type={type}
+            onChange={onChange}
+            placeholder={placeholder}
+            onBlur={onBlur}
+            value={value}
+            onKeyDown={onKeyDown}
         />
-        {props.textError && props.error && <span className={'input-error__message'}>{props.textError}</span>}
+        {textError && error && <span className={'input-error__message'}>{textError}</span>}
     </>
 }
